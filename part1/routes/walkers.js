@@ -9,4 +9,8 @@ var db =require('../db');
 //     "completed_walks": 2
 //   }
 
-router.get( '/summary', async (req))
+router.get('/summary', async (req, res) => {
+    try {
+        
+    }
+})
