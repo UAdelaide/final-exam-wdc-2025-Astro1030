@@ -11,6 +11,7 @@ var db =require('../db');
 
 router.get('/summary', async (req, res) => {
     try {
-        
+        const [rows] = await db.query(`
+            `)
     }
 })
