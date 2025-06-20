@@ -19,4 +19,4 @@ router.get('/open', async (req, res) => {
     }
 });
 
-    module.exports
+    module.exports = router;
