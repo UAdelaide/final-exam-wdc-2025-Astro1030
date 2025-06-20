@@ -12,7 +12,6 @@ const walkrequestsRouter = require('./routes/walkrequests');
 const walkersRouter = require('./routes/walkers');
 
 
-
 var app = express();
 
 app.use(logger('dev'));
