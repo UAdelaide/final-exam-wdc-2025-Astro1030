@@ -49,6 +49,7 @@ router.post('/login', async (req, res) => {
     }
 
     const user = rows[0];
+
      // Check if the provided password matches the stored password_hash
     if (user.password_hash !== password) {
       return res.status(401).json({ error: 'Incorrect password' });
