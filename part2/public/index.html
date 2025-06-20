@@ -63,41 +63,41 @@
   </div>
 
   <script>
-const { createApp, ref } = Vue;
+    const { createApp, ref } = Vue;
 
-createApp({
-  setup() {
-    const username = ref('');
-    const password = ref('');
-    const error    = ref('');
+    createApp({
+      setup() {
+        const username = ref('');
+        const password = ref('');
+        const error = ref('');
 
-    async function login() {
-      try {
-        const res = await fetch('/api/login', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ username: username.value, password: password.value })
-        });
+        async function login() {
+          try {
+            const res = await fetch('/api/login', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ username: username.value, password: password.value })
+            });
 
-        if (!res.ok) throw new Error((await res.json()).error || 'Login failed');
-        const result = await res.json();
+            if (!res.ok) throw new Error((await res.json()).error || 'Login failed');
+            const result = await res.json();
 
-        if (result.user.role === 'owner') {
-          location.href = 'owner-dashboard.html';
-        } else if (result.user.role === 'walker') {
-          location.href = 'walker-dashboard.html';
-        } else {
-          throw new Error('Unknown role');
+            if (result.user.role === 'owner') {
+              location.href = 'owner-dashboard.html';
+            } else if (result.user.role === 'walker') {
+              location.href = 'walker-dashboard.html';
+            } else {
+              throw new Error('Unknown role');
+            }
+          } catch (e) {
+            error.value = e.message;
+            console.error(e);
+          }
         }
-      } catch (e) {
-        error.value = e.message;
-        console.error(e);
+        return { username, password, error, login };
       }
-    }
-    return { username, password, error, login };
-  }
-}).mount('#app');
-</script>
+    }).mount('#app');
+  </script>
 
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
