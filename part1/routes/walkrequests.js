@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var db =require('../db');
+const mysql = require('mysql2/promise');
 
 //  request_id, dog_name, requested_time, duration_minutes, location, owner_username
 router.get('/open', async (req, res) => {
