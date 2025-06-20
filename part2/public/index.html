@@ -57,26 +57,30 @@
         <input v-model="password" type="password" class="form-control" id="password" required>
       </div>
       <button type="submit" class="btn btn-primary w-100">Log In</button>
-    </form>
+      </form>
 
-    <div v-if="error" class="alert alert-danger">{{ error }}</div>
+      <div v-if="error" class="alert alert-danger">{{ error }}</div>
+      </div>
+      <h2 class="mt-5">All Registered Dogs</h2>
+      <div v-if="dogs.length === 0" class="text-muted">Loading dogs…</div>
+
+      <table v-if="dogs.length" class="table table-bordered mt-3">
+        <thead class="table-light">
+          <tr>
+            <th>Name</th>
+            <th>Size</th>
+            <th>Image</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="dog in dogs" :key="dog.dog_id">
+            <td>{{ dog.name }}</td>
+            <td>{{ dog.size }}</td>
+            <td><img :src="dog.image" style="height:100px"></td>
+          </tr>
+        </tbody>
+      </table>
     </div>
-    <h2 class="mt-5">All Registered Dogs</h2>
-    <div v-if="dogs.length === 0" class="text-muted">Loading dogs…</div>
-
-    <table v-if="dogs.length" class="table table-bordered mt-3">
-      <thead class="table-light">
-        <tr><th>Name</th><th>Size</th><th>Image</th></tr>
-      </thead>
-      <tbody>
-        <tr v-for="dog in dogs" :key="dog.dog_id">
-          <td>{{ dog.name }}</td>
-          <td>{{ dog.size }}</td>
-          <td><img :src="dog.image" style="height:100px"></td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
 
   <script>
     const { createApp, ref, onMounted } = Vue;
