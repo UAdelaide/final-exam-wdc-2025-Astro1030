@@ -21,8 +21,6 @@ async function seedIfEmpty() {
     try {
         const [rows] = await db.query(`SELECT COUNT(*) AS cnt FROM Users`);
         if (rows[0].cnt === 0) {
-            console.log('🔄 Seeding test data...');
-
             await db.query(`
         INSERT INTO Users (username, email, password_hash, role) VALUES
           ('alice123','alice@example.com','hashed123','owner'),
