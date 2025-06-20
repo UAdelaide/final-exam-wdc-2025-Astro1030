@@ -52,6 +52,14 @@ router.post('/login', async (req, res) => {
       return res.status(401).json({ error: 'Incorrect password' });
     }
 
+    req.session.user = user;
+    res.json({ role: user.role });
+
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
 
 router.post('/logout', (req, res) => {
   req.session.destroy((err) => {
