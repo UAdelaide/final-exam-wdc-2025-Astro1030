@@ -69,8 +69,9 @@
               method: 'POST',
               headers: { 'Content-Type': 'application/json' },
               body: JSON.stringify({ username: usernmae.value, password: password.value})
-              
-            })
+
+            });
+            const result = await res.json()
           }
         }
       }
