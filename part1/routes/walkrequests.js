@@ -3,5 +3,8 @@ var router = express.Router();
 var db =require('../db');
 
 
-router.get('/open', async (req, res) =>
-)
+router.get('/open', async (req, res) => {
+    try {
+        const [rows]
+    }
+})
