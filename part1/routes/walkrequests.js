@@ -10,7 +10,7 @@ router.get('/open', async (req, res) => {
             FROM WalkRequests wr
             JOIN Dogs d ON wr.dog_id = d.dog_id
             JOIN User u ON d.owner_id = u.user_id
-            WHERE
+            WHERE wr.status
         `)
     }
 })
