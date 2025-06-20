@@ -25,5 +25,7 @@ router.get('/summary', async (req, res) => {
             GROUP BY u.user_id
         `);
         res.json(rows);
-    } catch (err)
+    } catch (err) {
+        console.error('error fetching walker sum')
+    }
 })
