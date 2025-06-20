@@ -37,6 +37,7 @@ router.get('/me', (req, res) => {
 
 // POST login (dummy version)
 router.post('/login', async (req, res) => {
+  // Extract username and password from the request body
   const { username, password } = req.body;
 
   try {
