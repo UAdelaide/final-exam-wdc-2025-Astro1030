@@ -2,7 +2,12 @@ const express = require('express');
 const path = require('path');
 require('dotenv').config();
 const session = require('express-session');
+const cors = require('cors');
 
+app.use(cors({
+  origin: 'http://localhost:8080',
+  credentials: true
+}));
 
 const app = express();
 
