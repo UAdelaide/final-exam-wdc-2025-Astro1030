@@ -37,24 +37,34 @@ router.get('/me', (req, res) => {
 
 // POST login (dummy version)
 router.post('/login', async (req, res) => {
-  const { username, password } = req.body;
+  const { email, password } = req.body;
 
   try {
     const [rows] = await db.query(`
       SELECT user_id, username, role FROM Users
-      WHERE username = ? AND password_hash = ?
-    `, [username, password]);
+      WHERE email = ? AND password_hash = ?
+    `, [email, password]);
 
     if (rows.length === 0) {
-      return res.status(401).json({ error: 'Invalid credentials' });
+      return res.status(401).send('Invalid credentials');
     }
 
-    res.json({ message: 'Login successful', user: rows[0] });
-  } catch (error) {
-    res.status(500).json({ error: 'Login failed' });
-  }
-});
+    req.session.user = rows[0];
 
+    if (rows[0].role === 'owner') {
+      return res.redirect('/owner-dashboard.html');
+    }
+
+    if (rows[0].role === 'walker') {
+      return res.redirect('/walker-dashboard.html');
+    }
+
+    return res.status(403).send('Unknown user role');
+
+  } catch (error) {
+    return res.status(500).send('Login failed');
+  }
+ });
 router.post('/logout', (req, res) => {
   req.session.destroy(err => {
     if (err) return res.status(500).json({ error: 'Failed to logout' });
