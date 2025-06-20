@@ -9,4 +9,4 @@ var db =require('../db');
 //     "completed_walks": 2
 //   }
 
-router.get('/summary', async (requestAnimationFrame.))
+router.get( '/summary', async (req))
