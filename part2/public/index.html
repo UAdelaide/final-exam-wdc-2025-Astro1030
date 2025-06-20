@@ -50,7 +50,7 @@
     <form @submit.prevent="login">
       <div class="mb-3">
         <lable class="form-lable">Username</lable>
-        <input
+        <input v-model="username" type="password"
       </div>
     </form>
   </div>
