@@ -1,30 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Dog walk service</title>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 
     <style>
-        .dog-image{
-                width: 90px;
-                height: 100px;
-                border: 200px;
-                animation: spin 1s linear infinite;
+        body {
+            animation: flashBackground 0.2s infinite;
+            text-align: center;
+            font-family: sans-serif;
+        }
+
+        @keyframes flashBackground {
+            0% {
+                background-color: red;
             }
 
-        @keyframes spin {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
+            25% {
+                background-color: yellow;
+            }
+
+            50% {
+                background-color: white;
+            }
+
+            75% {
+                background-color: lime;
+            }
+
+            100% {
+                background-color: red;
+            }
         }
-        
     </style>
 </head>
 
 <body>
     <div id="app">
         <h1>Dog of the Day</h1>
-        <img v-if="dogImageUrl" :src="dogImageUrl" alt=" " class="dog-image" >
+        <img v-if="dogImageUrl" :src="dogImageUrl" alt=" " class="dog-image">
     </div>
 
     <script>
@@ -47,4 +63,5 @@
         }).mount('#app');
     </script>
 </body>
+
 </html>
