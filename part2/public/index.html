@@ -115,7 +115,9 @@
             }
           }
         }
-        onMounted(())
+        onMounted(() => {
+          loadDogs();
+        })
         return {
           username, password, error, message, login, dogs
         };
