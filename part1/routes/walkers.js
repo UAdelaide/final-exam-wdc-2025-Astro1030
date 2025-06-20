@@ -26,6 +26,7 @@ router.get('/summary', async (req, res) => {
         `);
         res.json(rows);
     } catch (err) {
-        console.error('error fetching walker sum')
+        console.error('error fetching walker sum:', err.message);
+        res.status(500).json
     }
 })
