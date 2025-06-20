@@ -2,7 +2,6 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-var mysql = require('mysql2/promise');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -97,7 +96,7 @@ let db;
           ((SELECT dog_id FROM Dogs WHERE name='Dog2'),'2025-06-10 12:30:00',45,'Beachside Ave','accepted'),
           ((SELECT dog_id FROM Dogs WHERE name='Dog3'),'2025-06-10 14:30:00',45,'Beachside Ave','accepted');
       `);
-      }
+
       console.log('database is initialized successfully');
     } catch (err) {
     console.error('database error:', err.message);
