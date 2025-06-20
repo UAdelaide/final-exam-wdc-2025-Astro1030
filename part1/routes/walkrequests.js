@@ -14,6 +14,6 @@ router.get('/open', async (req, res) => {
         `);
         res.json(rows);
     } catch(err) {
-        console.error('Error ')
+        console.error('Error fetching open walk request:', err.message)
     }
 })
