@@ -4,12 +4,13 @@ require('dotenv').config();
 const session = require('express-session');
 const cors = require('cors');
 
+
+const app = express();
+
 app.use(cors({
   origin: 'http://localhost:8080',
   credentials: true
 }));
-
-const app = express();
 
 app.use(session({
   secret: 'mydogsecret',
