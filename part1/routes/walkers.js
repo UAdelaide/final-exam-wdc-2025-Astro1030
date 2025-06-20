@@ -13,7 +13,8 @@ router.get('/summary', async (req, res) => {
     try {
         const [rows] = await db.query(`
             SELECT
-                u.
+                u.username AS walker_username,
+                COUNT(r.rating)
         `)
     }
 })
