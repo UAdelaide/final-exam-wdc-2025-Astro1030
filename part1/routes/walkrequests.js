@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var db =require('../db');
 
-//request_id, dog_name, requested_time, duration_minutes, location, owner_username
+//  request_id, dog_name, requested_time, duration_minutes, location, owner_username
 router.get('/open', async (req, res) => {
     try {
         const [rows] = await db.query(`
