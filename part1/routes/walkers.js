@@ -16,7 +16,7 @@ router.get('/summary', async (req, res) => {
                 u.username AS walker_username,
                 COUNT(r.rating_id) AS total_rating,
                 ROUND(AVG(r.rating), 1) AS average_rating,
-                COUNT(CASE WHEN wr.)
+                COUNT(CASE WHEN wr.status = 'completed' THEN 1 END) AS 
         `)
     }
 })
