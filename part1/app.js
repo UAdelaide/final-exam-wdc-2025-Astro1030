@@ -55,7 +55,7 @@ async function seedIfEmpty() {
             console.log('Data already exists; skipping seed.');
         }
     } catch (err) {
-        console.error('❌ Seeding error:', err.message);
+        console.error('Seeding error:', err.message);
     }
 }
 app.use(logger('dev'));
