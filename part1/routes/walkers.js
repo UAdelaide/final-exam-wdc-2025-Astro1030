@@ -20,7 +20,7 @@ router.get('/summary', async (req, res) => {
 
             FROM Users u
             LEFT JOIN WalkRatings r On u.user_id = r.walker_id
-            
+            LEFT JOIN WalkReequests wr ON r.
         `)
     }
 })
