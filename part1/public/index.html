@@ -27,6 +27,7 @@
                     .then(res => res.json())
                     .then(data => {
                         this.dogImageUrl = data.message;
+                        console.log("Loaded image:", this.dogImageUrl);
                     });
             }
 
