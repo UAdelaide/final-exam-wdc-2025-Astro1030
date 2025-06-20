@@ -5,6 +5,8 @@ var db =require('../db');
 
 router.get('/open', async (req, res) => {
     try {
-        const [rows]
+        const [rows] = await db.query(
+            
+        )
     }
 })
