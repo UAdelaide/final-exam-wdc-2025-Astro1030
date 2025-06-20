@@ -91,6 +91,15 @@
         const message = ref('');
         const error = ref('');
 
+        async function loadMyDogs() {
+          try {
+            const res = await fetch('/api/mydogs');
+            myDogs.value = await res.json();
+          } catch (err) {
+            error.value = 'Failed to load dogs';
+          }
+        }
+
         async function loadWalks() {
           try {
             const res = await fetch('/api/walks');
