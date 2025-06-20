@@ -13,5 +13,7 @@ router.get('/open', async (req, res) => {
             WHERE wr.status = 'open'
         `);
         res.json(rows);
-    } catch(err)
+    } catch(err) {
+        console.error('Error ')
+    }
 })
