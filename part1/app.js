@@ -58,6 +58,9 @@ async function seedIfEmpty() {
         console.error('Seeding error:', err.message);
     }
 }
+
+seedIfEmpty();
+
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
