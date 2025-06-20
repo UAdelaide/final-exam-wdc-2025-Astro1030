@@ -56,6 +56,7 @@ router.post('/login', async (req, res) => {
     }
 
     req.session.user = user;
+    // Respond with the user's role (e.g., owner or walker) for front-end to redirect
     res.json({ role: user.role });
 
   } catch (err) {
