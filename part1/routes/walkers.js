@@ -22,7 +22,7 @@ router.get('/summary', async (req, res) => {
             LEFT JOIN WalkRatings r On u.user_id = r.walker_id
             LEFT JOIN WalkReequests wr ON r.request_id = wr.request_Id
             WHERE u.role = 'walker'
-            GROUP BY u.
-        `)
+            GROUP BY u.user_id
+        `);
     }
 })
