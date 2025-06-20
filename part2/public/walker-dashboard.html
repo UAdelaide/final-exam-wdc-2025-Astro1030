@@ -58,7 +58,7 @@
             });
             if(!res.ok) throw new Error('Failed to fetch user info');
             currentUser.value = await res.json();
-          }
+          } catch (err)
         }
 
 
