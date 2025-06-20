@@ -68,7 +68,8 @@
         const password = ref('');
         const error = ref('');
         const message = ref('Welcome to the Dog Walking Service!');
-        const dogs = 
+        const dogs = ref([]);
+        
         async function login() {
           try {
             const res = await fetch('/api/login', {
