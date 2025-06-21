@@ -105,8 +105,11 @@
             let result;
             if (contentType.includes('application/json')) {
               result = await res.json();
+            } else {
+              const text = await res.text();
 
-              
+
+
             if (!res.ok) throw new Error(result.error || 'Login failed');
 
             if (result.role === 'owner') {
