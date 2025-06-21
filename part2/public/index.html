@@ -101,14 +101,9 @@
               body: JSON.stringify({ username: username.value, password: password.value })
             });
 
-            
+
             let result;
-            try {
-              result = await res.json();
-            } catch (e) {
-              const text = await res.text();
-              throw new Error(`Invalid JSON: ${text.slice(0, 100)}...`);
-            }
+            
 
             if (!res.ok) throw new Error(result.error || 'Login failed');
 
