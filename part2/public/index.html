@@ -103,12 +103,12 @@
 
 
             let result;
-            if (contentType.includes('application/json')) {
+            try {
               result = await res.json();
-            } else {
+            } catch (e) {
               const text = await res.text();
-
-
+              throw new Error(`Invalid JSON: ${text.slice(0, 100)}...`);
+            }
 
             if (!res.ok) throw new Error(result.error || 'Login failed');
 
