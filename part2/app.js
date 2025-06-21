@@ -27,7 +27,6 @@ const dogsRouter = require('./routes/dogs');
 app.use('/api/walks', walkRoutes);
 app.use('/api', userRoutes);
 app.use('/api/dogs', dogsRouter);
-app.use('/api/user', userRoutes);
 
 
 
