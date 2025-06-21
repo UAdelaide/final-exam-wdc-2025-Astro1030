@@ -34,6 +34,7 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <title>Dog Walking Service</title>
@@ -99,23 +100,25 @@
               credentials: 'include',
               body: JSON.stringify({ username: username.value, password: password.value })
             });
+
+            
             let result;
-    try {
-      result = await res.json();
-    } catch (e) {
-      const text = await res.text(); 
-      throw new Error(`Invalid JSON: ${text.slice(0, 100)}...`);
-    }
+            try {
+              result = await res.json();
+            } catch (e) {
+              const text = await res.text();
+              throw new Error(`Invalid JSON: ${text.slice(0, 100)}...`);
+            }
 
-    if (!res.ok) throw new Error(result.error || 'Login failed');
+            if (!res.ok) throw new Error(result.error || 'Login failed');
 
-    if (result.role === 'owner') {
-      window.location.href = 'owner-dashboard.html';
-    } else if (result.role === 'walker') {
-      window.location.href = 'walker-dashboard.html';
-    } else {
-      throw new Error('Unknown role');
-    }
+            if (result.role === 'owner') {
+              window.location.href = 'owner-dashboard.html';
+            } else if (result.role === 'walker') {
+              window.location.href = 'walker-dashboard.html';
+            } else {
+              throw new Error('Unknown role');
+            }
 
             // const result = await res.json();
             // if (!res.ok) throw new Error(result.error || 'Login failed');
@@ -150,4 +153,5 @@
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>
