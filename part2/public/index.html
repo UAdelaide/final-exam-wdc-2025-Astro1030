@@ -102,12 +102,15 @@
             });
 
 
-            
-            try {
-              result = await res.json();
-            } catch (e) {
-              const text = await res.text();
-              throw new Error(`Invalid JSON: ${text.slice(0, 100)}...`);
+
+            const contentType = res.headers.get('Content-Type') || '';
+            let result;
+
+            if (contentType.includes('application/json')) {
+              result = await res.json();  // ✅ 只读取一次 Response body
+            } else {
+              const text = await res.text();  // ✅ 如果不是 JSON，就返回文本
+              throw new Error(`Unexpected server response: ${text}`);
             }
 
             if (!res.ok) throw new Error(result.error || 'Login failed');
