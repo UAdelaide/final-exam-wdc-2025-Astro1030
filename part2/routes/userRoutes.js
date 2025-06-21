@@ -73,24 +73,6 @@ router.post('/logout', (req, res) => {
   });
 });
 
-router.get('/mydogs', async (req, res) => {
-  if (!req.session.user || req.session.user.role !== 'owner') {
-    return res.status(401).json({ error: 'Not logged in as owner' });
-  }
-
-  const ownerId = req.session.user.user_id;
-
-  try {
-    const [dogs] = await db.query(
-      'SELECT dog_id, name, size FROM Dogs WHERE owner_id = ?',
-      [ownerId]
-    );
-    res.json(dogs);
-  } catch (err) {
-    console.error(err);
-    res.status(500).json({ error: 'Failed to fetch dogs' });
-  }
-});
 
 
 
