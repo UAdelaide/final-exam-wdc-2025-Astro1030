@@ -21,10 +21,13 @@ app.use(express.urlencoded({ extended: false }));
 // Routes
 const walkRoutes = require('./routes/walkRoutes');
 const userRoutes = require('./routes/userRoutes');
+const dogsRouter = require('./routes/dogs');
 
 
 app.use('/api/walks', walkRoutes);
 app.use('/api', userRoutes);
+app.use('/api/dogs', dogsRouter);
+
 
 // Export the app instead of listening here
 module.exports = app;
