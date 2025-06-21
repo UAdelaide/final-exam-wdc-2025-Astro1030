@@ -94,7 +94,7 @@
 
         async function login() {
           try {
-            const res = await fetch('/api/login', {
+            const res = await fetch('/api/user/login', {
               method: 'POST',
               headers: { 'Content-Type': 'application/json' },
               credentials: 'include',
@@ -109,7 +109,7 @@
             if (contentType.includes('application/json')) {
               result = await res.json();
             } else {
-              const text = await res.text();  
+              const text = await res.text();
               throw new Error(`Unexpected server response: ${text}`);
             }
 
